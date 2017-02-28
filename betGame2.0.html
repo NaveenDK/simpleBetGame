@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script>
+   var theNumber =Math.floor(Math.random()*37)+0;
+  // var Guess=;
+
+   var retCh=ReturnsOddOrEven();
+   var loose = new Audio("loose.mp3");
+   var win = new Audio("win.mp3");
+   function OddOrEven(){
+     //var output=  ;
+     if(theNumber%2==0){
+//output.value="even";
+document.getElementById('output').innerHTML=theNumber;
+//return "even";
+     }
+     else if(theNumber%2!=0){
+document.getElementById('output').innerHTML=theNumber;
+//return "odd";
+     }}
+     function ReturnsOddOrEven(){
+       //var output=  ;
+       if(theNumber%2==0){
+    //output.value="even";
+    //document.getElementById('output').innerHTML="even";
+    return "even";
+       }
+       else if(theNumber%2!=0){
+    //document.getElementById('output').innerHTML="odd";
+    return "odd";
+       }
+   }
+function Eval(){
+//  var snd = new Audio("file.wav");
+
+var G=  document.getElementById('guess').value;
+if(G!="odd" && G!="even"){
+  alert("Invalid");
+  location.reload();
+}
+if(G==retCh){
+  win.play();
+  document.getElementById('toWin').innerHTML="You won the Bet, Congratulations -refresh to win more!";
+}
+  else if(G!=retCh){
+    loose.play();
+    document.getElementById('toLose').innerHTML="You lost the Bet,refresh to Try Again ";
+  }
+
+}
+
+function refresh(){
+    location.reload();
+}
+    </script>
+    <style>
+    #cheat{
+      position:absolute;
+      left:1200px;
+color:#00ffff;
+    }
+    .btn{
+      background-color: #00ffff;
+    }
+.bet{
+  color:white;
+  background-color: red;
+  border: solid 1px #000;
+    border-radius: 5px
+}
+    #toWin{
+      text-shadow: 0 0 3px #008000;
+    }
+    #toLose{
+text-shadow: 0 0 3px #FF0000
+    }
+    body {
+    margin: 0;
+    padding: 0;
+    text-align: center; /* !!! */
+    background-color: black
+}
+    #main {
+    width: 800px;
+    margin: 25px auto;
+    height: 450px;
+    background-color: white;
+    border-style: outset;
+}
+
+    </style>
+  </head>
+  <body>
+    <div id="main">
+<h2>
+ Bet Game -2.0
+</h2>
+
+
+
+
+
+
+<img src="bet.jpg" alt="bet"> <br><br><br>
+<input type="text" id="guess" placeholder="Type in 'odd' or 'even'"/>
+<input type="button" class="bet" value="Start Bet" onclick="Eval()"/><br> <br> <br> <br>
+<input type="button"  value="Refresh" onclick="refresh()"/>
+
+
+<h1 id="toWin"></h1>
+<h1 id="toLose"></h1>
+</div>
+<div id="cheat">
+  <p> cheat for just $100-not recommended </p>
+<input type="button" class="btn" value="cheat anyway" onclick="OddOrEven()"/>
+<p id="output"></p><br>
+</div>
+  </body>
+</html>
